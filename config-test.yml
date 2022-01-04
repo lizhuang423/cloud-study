@@ -1,0 +1,26 @@
+server:
+  port: 3344
+
+eureka:
+  instance:
+    instance-id: cloud-gateway-service
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true #向注册中心注册自己
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/
+
+
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:lizhuang423/cloud-study.git
+          search-paths:
+            - cloud-study
+      label: main
+
